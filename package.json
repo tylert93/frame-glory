@@ -1,0 +1,32 @@
+{
+  "name": "paintshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.11.5",
+    "@babel/core": "^7.11.5",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.11.5",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.5.2",
+    "connect-flash": "^0.1.1",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "fs": "0.0.1-security",
+    "node-localstorage": "^2.1.6",
+    "nodemon": "^2.0.4",
+    "stripe": "^8.91.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}

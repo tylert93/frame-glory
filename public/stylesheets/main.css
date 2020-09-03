@@ -1,0 +1,67 @@
+body{
+    font-family: 'Quicksand', sans-serif;
+    margin-top:7rem;
+}
+
+.navbar ion-icon{
+    font-size: 2rem;
+    padding:0;
+}
+
+.cart-container ion-icon{
+    font-size: 1.5rem;
+    padding:0;
+}
+
+.add-cart{
+    font-weight: 700;
+}
+
+.add-cart:hover{
+    text-decoration: underline;
+}
+
+.image img{
+  margin-bottom: 1rem;
+  -webkit-box-shadow: 8px 8px 2px 1px grey;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    8px 8px 2px 1px grey;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         8px 8px 2px 1px grey;
+}
+
+.cart-container, .confirm-cart-container{
+    max-width:50rem;
+}
+
+.cart-header, .confirm-cart-header, .product-row{
+    border-bottom: 1px solid #9f9f9f;
+}
+
+.product-row img{
+    width:100%;
+}
+
+.delete-product:hover{
+    color:#FF4136;
+}
+
+.increase-product:hover, .decrease-product:hover{
+    color:#0074D9;
+}
+
+.word-wrap{
+    font-size:0.8rem;
+    white-space: pre-wrap;      /* CSS3 */   
+    white-space: -moz-pre-wrap; /* Firefox */    
+    white-space: -pre-wrap;     /* Opera <7 */   
+    white-space: -o-pre-wrap;   /* Opera 7 */    
+    word-wrap: break-word;  
+}
+
+.underline{
+    text-decoration: underline;
+}
+
+.shipping-form{
+    max-width:40rem;
+    margin:auto;
+}

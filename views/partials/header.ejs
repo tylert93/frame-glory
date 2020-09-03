@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86">
+    <title>Frame & Glory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/all.min.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand fixed-top navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">Frame & Glory</a>
+
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Artwork
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="/nature">Nature</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="/abstract">Abstract</a>
+                    </div>
+                  </li>
+            </ul>
+      
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/cart" data-toggle="tooltip" data-placement="left" title="view cart"><ion-icon name="cart-outline"></ion-icon><span class="cart-count badge badge-pill badge-success"></span></a>
+                </li>
+            </ul>
+        </div>        
+    </nav>
+
+    <div class="container px-5">
+        <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+    </div>        

@@ -1,0 +1,231 @@
+<%- include('partials/header') %>
+
+<div class="container px-5">
+
+    <h3 class="mb-5">Confirm Shipping Details</h3>
+
+    <form class="shipping-form" action="/shipping" method="POST">
+
+        <div class="form-group">
+          <div class="row">
+              <div class="col-12 col-md-9">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="shippingDetails[email]" placeholder="Your email" required>
+              </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+              <div class="col-12 col-md-9">
+                <label for="confirmEmail">Confirm Email</label>
+                <input type="email" class="form-control" id="confirmEmail" name="shippingDetails[confirmEmail]" placeholder="Re-enter email" required>
+              </div>
+          </div>  
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <label for="name">Deliver to</label>
+                    <input type="text" class="form-control" id="name" name="shippingDetails[name]" placeholder="Your name" required>
+                </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="addressLine1">Address Line 1</label>
+            <input type="text" class="form-control" id="addressLine1" name="shippingDetails[addressLine1]" placeholder="Your street" required>
+          </div>
+
+          <div class="form-group">
+            <label for="addressLine2">Address Line 2</label>
+            <input type="text" class="form-control" id="addressLine2" name="shippingDetails[addressLine2]" placeholder="Your area" required>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+                <div class="col-9 col-md-6">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" name="shippingDetails[city]" placeholder="Your city" required> 
+                </div>
+            </div>  
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+                <div class="col-9 col-md-6">
+                    <label for="county">County</label>
+                    <input type="text" class="form-control" id="county" name="shippingDetails[county]" placeholder="Your county" required>
+                </div>
+            </div>  
+          </div>
+
+          <div class="form-group">
+              <div class="row">
+                  <div class="col-6 col-md-3">
+                    <label for="postCode">Post Code</label>
+                    <input type="text" class="form-control" id="postCode" name="shippingDetails[postCode]" placeholder="Your post code" required>
+                  </div>
+              </div>
+          </div>
+          
+          <div class="form-group">
+            <div class="row">
+                <div class="col-9 col-md-6">
+                    <label for="country">Country</label>
+                    <select id="country" class="form-control" name="shippingDetails[country]">
+                        <option>Albania</option>
+                        <option>Algeria</option>
+                        <option>Andorra</option>
+                        <option>Anguilla</option>
+                        <option>Antigua and Barbuda</option>
+                        <option>Argentina</option>
+                        <option>Armenia</option>
+                        <option>Aruba</option>
+                        <option>Australia</option>
+                        <option>Austria</option>
+                        <option>Azerbaijan</option>
+                        <option>Bahamas</option>
+                        <option>Bahrain</option>
+                        <option>Bangladesh</option>
+                        <option>Barbados</option>
+                        <option>Belgium</option>
+                        <option>Belize</option>
+                        <option>Bermuda</option>
+                        <option>Bhutan</option>
+                        <option>Bolivia</option>
+                        <option>Bosnia and Herzegovina</option>
+                        <option>Botswana</option>
+                        <option>Brazil</option>
+                        <option>Bulgaria</option>
+                        <option>Cambodia</option>
+                        <option>Canada</option>
+                        <option>Cayman Islands</option>
+                        <option>Chile</option>
+                        <option>Colombia</option>
+                        <option>Costa Rica</option>
+                        <option>Croatia</option>
+                        <option>Cyprus</option>
+                        <option>Czech Republic</option>
+                        <option>Denmark</option>
+                        <option>Dominica</option>
+                        <option>Dominican Republic</option>
+                        <option>Ecuador</option>
+                        <option>Egypt</option>
+                        <option>El Salvador</option>
+                        <option>Estonia</option>
+                        <option>Fiji</option>
+                        <option>Finland</option>
+                        <option>France</option>
+                        <option>Gabon</option>
+                        <option>Georgia</option>
+                        <option>Germany</option>
+                        <option>Ghana</option>
+                        <option>Gibraltar</option>
+                        <option>Greece</option>
+                        <option>Grenada</option>
+                        <option>Guatemala</option>
+                        <option>Guyana</option>
+                        <option>Honduras</option>
+                        <option>Hungary</option>
+                        <option>Iceland</option>
+                        <option>India</option>
+                        <option>Indonesia</option>
+                        <option>Ireland</option>
+                        <option>Israel</option>
+                        <option>Italy</option>
+                        <option>Jamaica</option>
+                        <option>Japan</option>
+                        <option>Jersey</option>
+                        <option>Jordan</option>
+                        <option>Kazakhstan</option>
+                        <option>Kenya</option>
+                        <option>Kuwait</option>
+                        <option>Kyrgyzstan</option>
+                        <option>Latvia</option>
+                        <option>Liechtenstein</option>
+                        <option>Lithuania</option>
+                        <option>Luxembourg</option>
+                        <option>Malaysia</option>
+                        <option>Maldives</option>
+                        <option>Malta</option>
+                        <option>Mauritius</option>
+                        <option>Mexico</option>
+                        <option>Moldova</option>
+                        <option>Monaco</option>
+                        <option>Mongolia</option>
+                        <option>Montenegro</option>
+                        <option>Montserrat</option>
+                        <option>Morocco</option>
+                        <option>Myanmar</option>
+                        <option>Namibia</option>
+                        <option>Nepal</option>
+                        <option>Netherlands</option>
+                        <option>New Zealand</option>
+                        <option>Nicaragua</option>
+                        <option>Nigeria</option>
+                        <option>Niue</option>
+                        <option>North Macedonia</option>
+                        <option>Norway</option>
+                        <option>Oman</option>
+                        <option>Pakistan</option>
+                        <option>Panama</option>
+                        <option>Paraguay</option>
+                        <option>Peru</option>
+                        <option>Philippines</option>
+                        <option>Poland</option>
+                        <option>Portugal</option>
+                        <option>Puerto Rico</option>
+                        <option>Qatar</option>
+                        <option>Reunion</option>
+                        <option>Romania</option>
+                        <option>Russia</option>
+                        <option>Saint Helena</option>
+                        <option>Saint Lucia</option>
+                        <option>San Marino</option>
+                        <option>Saudi Arabia</option>
+                        <option>Serbia</option>
+                        <option>Seychelles</option>
+                        <option>Singapore</option>
+                        <option>Slovakia</option>
+                        <option>Slovenia</option>
+                        <option>South Africa</option>
+                        <option>South Korea</option>
+                        <option>Spain</option>
+                        <option>Sri Lanka</option>
+                        <option>Suriname</option>
+                        <option>Swaziland</option>
+                        <option>Sweden</option>
+                        <option>Switzerland</option>
+                        <option>Taiwan, China</option>
+                        <option>Thailand</option>
+                        <option>Tonga</option>
+                        <option>Trinidad and Tobago</option>
+                        <option>Tunisia</option>
+                        <option>Turkey</option>
+                        <option>Ukraine</option>
+                        <option>United Arab Emirates</option>
+                        <option selected>United Kingdom</option>
+                        <option>United States</option>
+                        <option>Uruguay</option>
+                        <option>Uzbekistan</option>
+                        <option>Venezuela</option>
+                        <option>Vietnam</option>
+                        <option>Virgin Islands, British</option>
+                        <option>Virgin Islands, U.S.</option>
+                        <option>Zambia</option>
+                    </select>
+                </div>
+            </div>  
+          </div>
+
+          <div class="text-center my-5">
+            <button class="btn btn-success" type="submit">Confirm details</button>
+          </div>
+
+      </form>
+
+</div>
+
+<%- include('partials/footer') %>

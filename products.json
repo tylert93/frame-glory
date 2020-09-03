@@ -1,0 +1,61 @@
+{
+    "nature":[
+        {
+            "name":"Fruits of Labour",
+            "tag":"fruitsOfLabour",
+            "price":25,
+            "inCart":0
+        },
+        {
+            "name":"Fading Palms",
+            "tag":"fadingPalms",
+            "price":35,
+            "inCart":0
+        },
+        {
+            "name":"Blossom",
+            "tag":"blossom",
+            "price":50,
+            "inCart":0
+        },
+        {
+            "name":"Promise of Spring",
+            "tag":"promiseOfSpring",
+            "price":20,
+            "inCart":0
+        },
+        {
+            "name":"Busy Branch",
+            "tag":"busyBranch",
+            "price":35,
+            "inCart":0
+        }
+    ],
+    "abstract":[
+        {
+            "name":"Upheaval",
+            "tag":"upheaval",
+            "price":40,
+            "inCart":0
+        },
+        {
+            "name":"Moods in Blue",
+            "tag":"moodsInBlue",
+            "price":30,
+            "inCart":0
+        },
+        {
+            "name":"Contemplation",
+            "tag":"contemplation",
+            "price":30,
+            "inCart":0
+        },
+        {
+            "name":"Refreshment",
+            "tag":"refreshment",
+            "price":30,
+            "inCart":0
+        }
+    ]    
+        
+}
