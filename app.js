@@ -119,6 +119,8 @@ app.get("/payment-success", async (req, res) => {
     Object.values(app.locals.cartItems).forEach(item =>{
         productNames += `${item.name} x ${item.inCart}, `;
     });
+
+    let shippingDetails = app.locals.shippingDetails;
     
     let msg = `
         <h3>Order Confirmation</h3>
