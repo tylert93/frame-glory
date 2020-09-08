@@ -4,7 +4,6 @@ import fs from 'fs';
 import bodyParser from 'body-parser';
 import flash from 'connect-flash';
 import expressSession from 'express-session';
-import nodemailer from 'nodemailer';
 import {checkCartExists} from './middleware/index';
 import {checkShippingDetailsExist} from './middleware/index';
 
@@ -113,50 +112,7 @@ app.post("/create-checkout-session", async (req, res) => {
     res.json({ id: session.id });
   });
 
-app.get("/payment-success", async (req, res) => {
-
-    let productNames = "";
-    Object.values(app.locals.cartItems).forEach(item =>{
-        productNames += `${item.name} x ${item.inCart}, `;
-    });
-
-    let shippingDetails = app.locals.shippingDetails;
-    
-    let msg = `
-        <h3>Order Confirmation</h3>
-        <p>Thank you for your order from Frame & Glory. This is a confirmaiton email of your order. You will recieve another email to confirm when your order has been sent.</p>
-        <h5>Items</h5>
-        <div>${productNames}</div>
-        <div>Total: ${app.locals.totalCost}</div>
-        <h5>Shipping Details</h5>
-        <div> ${shippingDetails.name} </div>
-        <div> ${shippingDetails.addressLine1} </div>
-        <div> ${shippingDetails.addressLine2} </div>
-        <div> ${shippingDetails.city} </div>
-        <div> ${shippingDetails.county} </div>
-        <div> ${shippingDetails.postCode} </div>
-        <div> ${shippingDetails.country} </div>
-    `
-
-    // create reusable transporter object using the default SMTP transport
-    let transporter = nodemailer.createTransport({
-        host: "smtp.outlook.com",
-        port: 587,
-        secure: false, // true for 465, false for other ports
-        auth: {
-        user: process.env.USER_EMAIL, // generated ethereal user
-        pass: process.env.USER_PASSWORD, // generated ethereal password
-        },
-    });
-
-    // send mail with defined transport object
-    let info = await transporter.sendMail({
-        from: '"Frame&Glory" <tom.tyler.development@outlook.com>', // sender address
-        to: app.locals.shippingDetails.email, // list of receivers
-        subject: "Purchase Confirmation", // Subject line
-        text: "Hello world?", // plain text body
-        html: msg, // html body
-    });
+app.get("/payment-success", (req, res) => {
     app.locals.shippingDetails = {};
     app.locals.cartItems = {};
     app.locals.totalCost = null;
