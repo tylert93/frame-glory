@@ -113,7 +113,7 @@ app.post("/create-checkout-session", async (req, res) => {
     res.json({ id: session.id });
   });
 
-app.get("/payment-success", (req, res) => {
+app.get("/payment-success", async (req, res) => {
 
     let productNames = "";
     Object.values(app.locals.cartItems).forEach(item =>{
