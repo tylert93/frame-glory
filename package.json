@@ -24,6 +24,7 @@
     "express-session": "^1.17.1",
     "fs": "0.0.1-security",
     "node-localstorage": "^2.1.6",
+    "nodemailer": "^6.4.11",
     "nodemon": "^2.0.4",
     "stripe": "^8.91.0"
   },
