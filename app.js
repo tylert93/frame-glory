@@ -4,8 +4,10 @@ import fs from 'fs';
 import bodyParser from 'body-parser';
 import flash from 'connect-flash';
 import expressSession from 'express-session';
+import nodemailer from 'nodemailer';
 import {checkCartExists} from './middleware/index';
 import {checkShippingDetailsExist} from './middleware/index';
+import {checkForToken} from './middleware/index';
 
 dotenv.config();
 
@@ -28,12 +30,11 @@ app.use(expressSession({
 app.use((req, res, next) => {
     res.locals.error = req.flash("error");
     res.locals.success = req.flash("success");
-   
     next();
 });
 
 app.get("/", (req, res) => {
-    res.render("index", {test:req.app.locals.totalProducts});
+    res.render("index");
 });
 
 app.get("/nature", (req, res) => {
@@ -89,6 +90,7 @@ app.post("/create-checkout-session", async (req, res) => {
     Object.values(req.body.cartItems).forEach(item =>{
         productNames += `${item.name} x ${item.inCart}, `;
     });
+    app.locals.token = true;
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
@@ -105,12 +107,67 @@ app.post("/create-checkout-session", async (req, res) => {
         },
       ],
       mode: "payment",
-      success_url: `${process.env.URL}/payment-success`,
+      success_url: `${process.env.URL}/confirmation-email`,
       cancel_url: `${process.env.URL}/payment-failure`,
     });
   
     res.json({ id: session.id });
   });
+
+app.get("/confirmation-email", checkForToken, (req, res) => {
+
+    app.locals.token = false;
+    let productsList = '';
+    let products = Object.values(app.locals.cartItems);
+    products.forEach(item => {
+        productsList += `<div>${item.name} (£${item.price}) X ${item.inCart} - £${item.price * item.inCart}</div>`
+    });
+
+    let message = `
+    <h2> Booking Confirmation </h2>
+    <br>
+    <div>Thank you for shopping with Frame & Glory. This email is a confirmation of your purchase. Please find your order details below.</div>
+    <br>
+    <h3>Items</h3>
+    <div>${productsList}</div>
+    <div><strong>Total: </strong>£${app.locals.totalCost}</div>
+    <br>
+    <h3>Shipping Address</h3>
+    <div>${app.locals.shippingDetails.name}</div>
+    <div>${app.locals.shippingDetails.addressLine1}</div>
+    <div>${app.locals.shippingDetails.addressLine2}</div>
+    <div>${app.locals.shippingDetails.city}</div>
+    <div>${app.locals.shippingDetails.county}</div>
+    <div>${app.locals.shippingDetails.postCode}</div>
+    <div>${app.locals.shippingDetails.country}</div>
+    `
+
+    async function main() {
+        // create reusable transporter object using the default SMTP transport
+        let transporter = nodemailer.createTransport({
+            service: 'outlook',
+            auth:{
+                user: process.env.USER_EMAIL,
+                pass:process.env.USER_PASSWORD
+            },
+            tls: { rejectUnauthorized: false }
+        });
+      
+        // send mail with defined transport object
+        let info = await transporter.sendMail({
+            from: 'Frame & Glory',
+            to: app.locals.shippingDetails.email,
+            subject: 'Order Confirmation',
+            html: message
+        });
+      
+        console.log("Message sent: %s", info.messageId);
+      }
+      
+      main().catch(console.error);
+
+      res.redirect("payment-success");
+})  
 
 app.get("/payment-success", (req, res) => {
     app.locals.shippingDetails = {};
@@ -121,6 +178,7 @@ app.get("/payment-success", (req, res) => {
 });
 
 app.get("/payment-failure", (req, res) => {
+    app.locals.token = false;
     res.render("paymentFailure")
 });
 
@@ -128,7 +186,6 @@ app.post("/set-locals", (req, res) => {
     app.locals.cartItems = req.body.cartItems;
     app.locals.totalCost = req.body.totalCost;
     app.locals.totalProducts = req.body.totalProducts;
-    console.log(app.locals.cartItems, app.locals.totalCost, app.locals.totalProducts);
 });
 
 app.get("*", (req, res) => {

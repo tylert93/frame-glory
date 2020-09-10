@@ -284,4 +284,5 @@ document.addEventListener("DOMContentLoaded", () => {
     addButtons("cartButtons");
     updateCartNumbers();
     displayCart();
+    setLocals();
 });

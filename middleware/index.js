@@ -4,7 +4,7 @@ const app = express();
 
 export const checkCartExists = (req, res, next) => {
     if(req.app.locals.totalProducts && req.app.locals.totalCost && req.app.locals.cartItems){
-        return next()
+        return next();
     }
     req.flash("error", "Your cart is empty")
     res.redirect("/cart");
@@ -12,8 +12,15 @@ export const checkCartExists = (req, res, next) => {
 
 export const checkShippingDetailsExist = (req, res, next) => {
     if(req.app.locals.shippingDetails){
-        return next()
+        return next();
     }
     req.flash("error", "You haven't entered any shipping details")
     res.redirect("/shipping");
+}
+
+export const checkForToken = (req, res, next) => {
+    if(req.app.locals.token){
+        return next();
+    }
+    res.redirect("/cart");
 }
