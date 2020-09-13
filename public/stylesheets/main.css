@@ -65,3 +65,9 @@ body{
     max-width:40rem;
     margin:auto;
 }
+
+@media (max-width: 576px) {
+    .cart-header{
+        font-size:1rem;
+    }
+}
