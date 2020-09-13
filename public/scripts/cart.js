@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                         <div class="col-3 d-flex align-items-center">
                             <ion-icon class="decreaseButtons btn" name="remove-circle-outline" tag="${item.tag}"></ion-icon>
-                            <span class="mx-4">${item.inCart}</span>
+                            <span class="mx-2 mx-sm-4">${item.inCart}</span>
                             <ion-icon class="increaseButtons btn" name="add-circle-outline" tag="${item.tag}"></ion-icon>
                         </div>
                         <div class="col-2 d-flex align-items-center">
